@@ -37,8 +37,9 @@
       };
 
       finder = {
-        ShowPathbar = true; # show path bar
-        ShowStatusBar = true; # show status bar
+        ShowPathbar = true; # Show path bar
+        ShowStatusBar = true; # Show status bar
+        FXPreferredViewStyle = "clmv"; # Set finder default view style to column
       };
 
       trackpad = {
