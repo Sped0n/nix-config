@@ -1,0 +1,83 @@
+{
+  config,
+  pkgs,
+  vars,
+  specialArgs,
+  ...
+}: let
+  home = "${config.users.users.${vars.username}.home}";
+in {
+  imports = [
+    ./system.nix
+    ./secrets.nix
+  ];
+
+  users.users.${vars.username} = {
+    name = "${vars.username}";
+    home = "/Users/${vars.username}";
+    shell = pkgs.zsh;
+  };
+
+  programs.zsh.enable = true;
+
+  homebrew = {
+    enable = true;
+    casks = pkgs.callPackage ./casks.nix {};
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "zap";
+    };
+
+    # These app IDs are from using the mas CLI app
+    # mas = mac app store
+    # https://github.com/mas-cli/mas
+    #
+    # $ nix shell nixpkgs#mas
+    # $ mas search <app name>
+    #
+    # If you have previously added these apps to your Mac App Store profile (but not installed them on this system),
+    # you may receive an error message "Redownload Unavailable with This Apple ID".
+    # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
+    masApps = {
+      "Bitwarden" = 1352778147;
+      "WeChat" = 836500024;
+      "WhatsApp Messenger" = 310633997;
+      "Endel" = 1346247457;
+      "Windows App" = 1295203466;
+      "Dropover" = 1355679052;
+      "Microsoft Word" = 586447913;
+      "Microsoft Excel" = 586683407;
+      "Microsoft PowerPoint" = 586449534;
+      "Microsoft Outlook" = 951937596;
+      "Microsoft OneDrive" = 477537958;
+      "PDFgear" = 6469021132;
+      "Photomator" = 1444636541;
+      "VidHub" = 1659622164;
+    };
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = specialArgs;
+    users.${vars.username} = {
+      pkgs,
+      config,
+      ...
+    }: {
+      imports = [
+        ./programs
+        ../shared/programs
+      ];
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        packages = pkgs.callPackage ./packages.nix {};
+        stateVersion = "24.11";
+      };
+      xdg.configFile."nvim".source =
+        config.lib.file.mkOutOfStoreSymlink
+        "${home}/.config/nix/modules/shared/config/nvim";
+    };
+  };
+}
