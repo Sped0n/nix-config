@@ -47,4 +47,7 @@ _: [
   "affinity-photo"
   "affinity-designer"
   "handbrake"
+
+  # Others
+  "moonlight"
 ]
