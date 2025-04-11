@@ -46,11 +46,11 @@ in {
       "Endel" = 1346247457;
       "Windows App" = 1295203466;
       "Dropover" = 1355679052;
-      "Microsoft Word" = 586447913;
-      "Microsoft Excel" = 586683407;
-      "Microsoft PowerPoint" = 586449534;
-      "Microsoft Outlook" = 951937596;
-      "Microsoft OneDrive" = 477537958;
+      "Microsoft Word" = 462054704;
+      "Microsoft Excel" = 462058435;
+      "Microsoft PowerPoint" = 462062816;
+      "Microsoft Outlook" = 985367838;
+      "Microsoft OneDrive" = 823766827;
       "PDFgear" = 6469021132;
       "Photomator" = 1444636541;
       "VidHub" = 1659622164;
