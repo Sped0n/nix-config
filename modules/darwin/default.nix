@@ -22,7 +22,7 @@
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
     onActivation = {
-      autoUpdate = true;
+      autoUpdate = false;
       upgrade = true;
       cleanup = "zap";
     };
