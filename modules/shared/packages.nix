@@ -1,6 +1,7 @@
 {pkgs, ...}:
 with pkgs; [
   # General packages for development and system management
+  tlrc
   act
   openssh
   pandoc
@@ -22,4 +23,5 @@ with pkgs; [
   ripgrep
   tree
   unzip
+  less
 ]
