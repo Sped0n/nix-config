@@ -4,9 +4,7 @@
   vars,
   specialArgs,
   ...
-}: let
-  home = "${config.users.users.${vars.username}.home}";
-in {
+}: {
   imports = [
     ./system.nix
     ./secrets.nix
@@ -40,20 +38,21 @@ in {
     # you may receive an error message "Redownload Unavailable with This Apple ID".
     # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
     masApps = {
-      "Bitwarden" = 1352778147;
-      "WeChat" = 836500024;
-      "WhatsApp Messenger" = 310633997;
-      "Endel" = 1346247457;
-      "Windows App" = 1295203466;
-      "Dropover" = 1355679052;
-      "Microsoft Word" = 462054704;
-      "Microsoft Excel" = 462058435;
-      "Microsoft PowerPoint" = 462062816;
-      "Microsoft Outlook" = 985367838;
-      "Microsoft OneDrive" = 823766827;
-      "PDFgear" = 6469021132;
-      "Photomator" = 1444636541;
-      "VidHub" = 1659622164;
+      # FIXME: mas is broken on macOS 15.4
+      #"Bitwarden" = 1352778147;
+      #"WeChat" = 836500024;
+      #"WhatsApp Messenger" = 310633997;
+      #"Endel" = 1346247457;
+      #"Windows App" = 1295203466;
+      #"Dropover" = 1355679052;
+      #"Microsoft Word" = 462054704;
+      #"Microsoft Excel" = 462058435;
+      #"Microsoft PowerPoint" = 462062816;
+      #"Microsoft Outlook" = 985367838;
+      #"Microsoft OneDrive" = 823766827;
+      #"PDFgear" = 6469021132;
+      #"Photomator" = 1444636541;
+      #"VidHub" = 1659622164;
     };
   };
 
@@ -61,11 +60,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = specialArgs;
-    users.${vars.username} = {
-      pkgs,
-      config,
-      ...
-    }: {
+    users.${vars.username} = {pkgs, ...}: {
       imports = [
         ./programs
         ../shared/programs
@@ -75,9 +70,6 @@ in {
         packages = pkgs.callPackage ./packages.nix {};
         stateVersion = "24.11";
       };
-      xdg.configFile."nvim".source =
-        config.lib.file.mkOutOfStoreSymlink
-        "${home}/.config/nix/modules/shared/config/nvim";
     };
   };
 }
