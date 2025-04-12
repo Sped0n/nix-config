@@ -10,6 +10,7 @@
       init.defaultBranch = "main";
       pull.rebase = true;
       rebase.autoStash = true;
+      merge.conflictStyle = "zdiff3";
     };
 
     signing = {
@@ -26,6 +27,7 @@
         line-number = true;
         light = false;
         navigate = true;
+        syntax-theme = "ansi";
       };
     };
 
