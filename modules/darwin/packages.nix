@@ -12,6 +12,7 @@ in
     gdb
     lldb
     act
+    bfg-repo-cleaner
 
     # python
     uv
