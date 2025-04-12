@@ -6,6 +6,7 @@
     ./git.nix
     ./ssh.nix
     ./zellij.nix
+    ./fastfetch.nix
   ];
 
   programs.eza = {

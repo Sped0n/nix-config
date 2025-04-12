@@ -10,10 +10,11 @@
     syntaxHighlighting = {
       enable = true;
     };
-    initExtra = "
+    initExtraFirst = "
       zstyle ':completion:*' menu select
       zvm_after_init_commands+=(eval \"$(atuin init zsh --disable-up-arrow)\")
     ";
+    initExtra = "fastfetch";
     plugins = [
       {
         name = "vi-mode";
