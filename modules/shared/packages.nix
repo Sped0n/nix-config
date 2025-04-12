@@ -1,13 +1,12 @@
 {pkgs, ...}:
 with pkgs; [
   # General packages for development and system management
+  just
   tlrc
-  act
   openssh
-  pandoc
-  sqlite
   wget
   zip
+  unzip
 
   # Encryption and security tools
   age
@@ -17,11 +16,18 @@ with pkgs; [
   du-dust
   fd
   fzf
-  htop
-  iftop
+  bottom
   jq
   ripgrep
   tree
-  unzip
   less
+
+  # lua
+  lua-language-server
+  stylua
+  selene
+
+  # nix
+  nixd
+  alejandra
 ]

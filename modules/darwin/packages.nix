@@ -4,20 +4,11 @@ with pkgs; let
 in
   shared-packages
   ++ [
-    # misc
     openocd
     gcc
     gdb
     lldb
-
-    # lua
-    lua-language-server
-    stylua
-    selene
-
-    # nix
-    nixd
-    alejandra
+    act
 
     # python
     uv
