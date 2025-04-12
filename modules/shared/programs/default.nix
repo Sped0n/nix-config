@@ -2,15 +2,10 @@
   imports = [
     ./zsh.nix
     ./starship.nix
+    ./neovim.nix
     ./git.nix
     ./ssh.nix
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-  };
 
   programs.eza = {
     enable = true;
