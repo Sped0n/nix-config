@@ -5,6 +5,7 @@
     ./neovim.nix
     ./git.nix
     ./ssh.nix
+    ./zellij.nix
   ];
 
   programs.eza = {
