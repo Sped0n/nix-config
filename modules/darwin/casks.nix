@@ -25,6 +25,7 @@ _: [
   "one-switch"
   "rectangle"
   "shottr"
+  "pearcleaner"
 
   # Entertainment Tools
   "iina"
