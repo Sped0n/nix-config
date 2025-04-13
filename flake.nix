@@ -55,7 +55,7 @@
             user = "${vars.username}";
           };
         }
-        ./machines/ringo.nix
+        ./machines/ringo
       ];
     };
   };

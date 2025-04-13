@@ -4,9 +4,9 @@
   ...
 }: {
   imports = [
-    ../modules/darwin
-    ../modules/shared
-    ../modules/darwin/secrets.nix
+    ../../modules/darwin
+    ../../modules/shared
+    ../../modules/darwin/secrets.nix
   ];
 
   nix = {
