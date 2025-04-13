@@ -1,5 +1,8 @@
 {vars, ...}: {
   programs.ssh = {
+    includes = [
+      "~/.orbstack/ssh/config"
+    ];
     matchBlocks = {
       "uranus" = {
         hostname = vars.ips.uranus;
