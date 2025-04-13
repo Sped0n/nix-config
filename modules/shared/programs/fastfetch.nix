@@ -71,6 +71,7 @@
         (
           {
             type = "disk";
+            folders = "/";
             key = "Disk";
             format = "{size-used} / {size-total}";
           }
