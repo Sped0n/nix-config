@@ -21,6 +21,7 @@ with pkgs; [
   ripgrep
   tree
   less
+  yazi
 
   # lua
   lua-language-server

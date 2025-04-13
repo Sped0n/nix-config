@@ -26,7 +26,6 @@ in
     minicom
     nali
     tokei
-    yazi
   ]
   ++
   # Languages supports
