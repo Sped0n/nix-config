@@ -5,6 +5,7 @@ _: [
   "ghostty"
   "beekeeper-studio"
   "orbstack"
+  "virtualbuddy"
   "netron"
   "httpie"
 

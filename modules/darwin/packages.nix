@@ -4,23 +4,39 @@ with pkgs; let
   codegpt = pkgs.callPackage ../../pkgs/codegpt.nix {};
 in
   shared-packages
-  ++ [
-    # utils
-    codegpt
+  ++
+  # Core
+  [
+    docker
     openocd
+    qemu
+    cmake
     gcc
     gdb
     lldb
-    act
+  ]
+  ++
+  # Utils
+  [
     bfg-repo-cleaner
-
+    codegpt
+    hyperfine
+    act
+    ast-grep
+    minicom
+    nali
+    tokei
+    yazi
+  ]
+  ++
+  # Languages supports
+  [
     # python
     uv
     ruff
     basedpyright
 
     # go
-    go
     gopls
     gofumpt
 
@@ -35,4 +51,12 @@ in
     prettierd
     vtsls
     eslint
+    pnpm
+  ]
+  ++
+  # Others
+  [
+    ffmpeg
+    imagemagick
+    restic
   ]
