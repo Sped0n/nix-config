@@ -11,8 +11,8 @@
       enable = true;
     };
     initExtraFirst = "
-      zstyle ':completion:*' menu select
-      zvm_after_init_commands+=(eval \"$(atuin init zsh --disable-up-arrow)\")
+      source ${../config/zsh/extras.zsh}
+      source ${../config/zsh/functions.zsh}
     ";
     initExtra = "fastfetch";
     plugins = [
