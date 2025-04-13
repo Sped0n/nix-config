@@ -6,23 +6,20 @@
 }:
 buildGoModule rec {
   pname = "codegpt";
-  version = "0.4.3"; # <-- Update this when a new version is released
+  version = "0.16.1"; # <-- Update this when a new version is released
 
   src = fetchFromGitHub {
     owner = "appleboy";
     repo = "CodeGPT";
     rev = "v${version}";
     # Get this hash by running:
-    # nix run nixpkgs#nix-prefetch-github -- appleboy CodeGPT --rev v0.4.3
-    hash = "sha256-FfbcL6tCg+JZ3BoE/YGVPu+LGvemUWGfl5RH+raZZ78="; # <-- Update this when a new version is released
+    # nix run nixpkgs#nix-prefetch-github -- appleboy CodeGPT --rev ${version}
+    hash = "sha256-pBdppzYP2AJUifLGvEUoN5g2fZNNKj4M25FQBu2/j9s="; # <-- Update this when a new version is released
   };
 
   # To obtain the actual hash, set vendorHash = lib.fakeHash; and run the build
   # you will get a error message with the real vendorHash
-  vendorHash = "sha256-ublBYHjwM++1pzChND0Xjh66EG+bf9izhJzzcjhvtwY="; # <-- Update this when a new version is released
-  # Ignore the inconsistent vendor directory from the source archive
-  # and fetch dependencies based on go.mod/go.sum via Nix proxy.
-  proxyVendor = true;
+  vendorHash = "sha256-Lgl3tIfLECBUtTgOTdYHCpkVr/Y64ny0GB98bCyZFQk="; # <-- Update this when a new version is released
 
   ldflags = [
     "-s"
