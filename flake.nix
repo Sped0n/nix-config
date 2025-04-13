@@ -42,7 +42,7 @@
       inputs // {inherit vars;};
   in {
     imports = ["${secrets}/vars"];
-    darwinConfigurations."ringo-ii" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."ringo" = nix-darwin.lib.darwinSystem {
       inherit specialArgs;
       system = "aarch64-darwin";
       modules = [
@@ -55,7 +55,7 @@
             user = "${vars.username}";
           };
         }
-        ./machines/ringo-ii.nix
+        ./machines/ringo.nix
       ];
     };
   };
