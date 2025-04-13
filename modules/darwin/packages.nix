@@ -52,6 +52,9 @@ in
     vtsls
     eslint
     pnpm
+
+    # zig
+    zls
   ]
   ++
   # Others
