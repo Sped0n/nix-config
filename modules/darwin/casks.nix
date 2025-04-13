@@ -8,6 +8,7 @@ _: [
   "virtualbuddy"
   "netron"
   "httpie"
+  "termius"
 
   # Communication Tools
   "discord"
