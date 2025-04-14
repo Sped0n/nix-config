@@ -9,6 +9,12 @@
     ./secrets.nix
   ];
 
+  nix.gc.interval = {
+    Weekday = 0;
+    Hour = 0;
+    Minute = 0;
+  };
+
   users.users.${vars.username} = {
     name = "${vars.username}";
     home = "/Users/${vars.username}";

@@ -8,7 +8,7 @@ in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    vimAlias = true;
+    vimAlias = false;
   };
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
