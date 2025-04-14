@@ -17,6 +17,12 @@
       flake = false;
     };
 
+    # NixOS
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Darwin
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -24,6 +30,10 @@
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -34,8 +44,10 @@
     home-manager,
     agenix,
     secrets,
+    disko,
     nix-darwin,
     nix-homebrew,
+    nixos-generators,
   }: let
     vars = import "${secrets}/vars";
     specialArgs =
@@ -56,6 +68,27 @@
         }
         ./machines/ringo
       ];
+    };
+
+    nixosConfigurations."luna" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        ./machines/luna
+      ];
+    };
+
+    packages.aarch64-darwin = {
+      lunaISO = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+          ./machines/luna
+        ];
+        format = "raw";
+      };
     };
   };
 }
