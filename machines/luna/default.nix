@@ -1,6 +1,7 @@
 {vars, ...}: {
   imports = [
     ../../modules/nixos/server
+
     ./system.nix
     ./disko.nix
     ./networking.nix

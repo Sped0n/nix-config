@@ -97,7 +97,7 @@
         home-manager.nixosModules.home-manager
         ./machines/luna
       ];
-      format = "raw";
+      format = "iso";
     };
   };
 }

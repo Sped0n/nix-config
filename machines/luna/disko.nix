@@ -1,8 +1,8 @@
-{lib, ...}: {
-  disko.devices = {
-    disk = {
-      my-disk = {
-        device = "/vda/vda1";
+{...}: {
+  disko = {
+    devices = {
+      disk.main = {
+        device = "/dev/vda";
         type = "disk";
         content = {
           type = "gpt";
@@ -14,26 +14,22 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = ["fmask=0077" "dmask=0077"];
               };
             };
-            root = {
+
+            nix = {
               size = "100%";
               content = {
                 type = "filesystem";
                 format = "btrfs";
                 mountpoint = "/";
+                mountOptions = ["compress-force=zstd" "nosuid" "nodev"];
               };
             };
           };
         };
       };
     };
-  };
-
-  # Workarounds
-  fileSystems."/" = {
-    fsType = lib.mkForce "btrfs";
-    device = lib.mkForce "/dev/disk/by-partlabel/disk-main-root";
   };
 }
