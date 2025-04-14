@@ -39,12 +39,6 @@
 
   time.timeZone = "Asia/Singapore";
 
-  environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-  ];
-
   networking = {
     dhcpcd.enable = false;
     useDHCP = false;
@@ -93,6 +87,7 @@
         enableNixpkgsReleaseCheck = false;
         stateVersion = "24.11";
       };
+      shell = pkgs.zsh;
     };
 
     users.root = {...}: {
