@@ -32,6 +32,10 @@
       trusted-users = ["${vars.username}"];
       experimental-features = "nix-command flakes";
     };
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 14d";
+    };
   };
 
   # Home manager

@@ -1,9 +1,17 @@
-{vars, ...}: {
+{
+  pkgs,
+  vars,
+  ...
+}: {
   imports = [
     ../../modules/darwin
   ];
 
-  nix.enable = false; # For nix-darwin and determinate compatbility
+  nix.linux-builder = {
+    enable = true;
+    systems = ["x86_64-linux"];
+    package = pkgs.darwin.linux-builder-x86_64;
+  };
 
   home-manager = {
     users.${vars.username} = {...}: {
