@@ -71,6 +71,7 @@
     };
 
     nixosConfigurations."luna" = nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
       system = "x86_64-linux";
       modules = [
         disko.nixosModules.disko
@@ -79,16 +80,15 @@
       ];
     };
 
-    packages.aarch64-darwin = {
-      lunaISO = nixos-generators.nixosGenerate {
-        system = "x86_64-linux";
-        modules = [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
-          ./machines/luna
-        ];
-        format = "raw";
-      };
+    nixosConfiguration."lunaISO" = nixos-generators.nixosGenerate {
+      inherit specialArgs;
+      system = "x86_64-linux";
+      modules = [
+        disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        ./machines/luna
+      ];
+      format = "raw";
     };
   };
 }
