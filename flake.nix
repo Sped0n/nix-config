@@ -70,6 +70,15 @@
       ];
     };
 
+    nixosConfigurations."tane" = nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
+      system = "aarch64-linux";
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./machines/tane
+      ];
+    };
+
     nixosConfigurations."luna" = nixpkgs.lib.nixosSystem {
       inherit specialArgs;
       system = "x86_64-linux";

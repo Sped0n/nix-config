@@ -1,5 +1,8 @@
 {pkgs}:
 with pkgs; {
+  imports = [
+    ../../shared/packages.nix
+  ];
   home.packages =
     # Core
     [
