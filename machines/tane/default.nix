@@ -29,7 +29,7 @@
     createHome = true;
     home = "/home/spedon";
     homeMode = "700";
-    useDefaultShell = true;
+    shell = pkgs.zsh;
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -87,7 +87,6 @@
         enableNixpkgsReleaseCheck = false;
         stateVersion = "24.11";
       };
-      shell = pkgs.zsh;
     };
 
     users.root = {...}: {
