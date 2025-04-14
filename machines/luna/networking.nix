@@ -1,5 +1,4 @@
 {vars, ...}: {
-  # Interface
   networking = {
     hostName = "luna";
     interfaces.eth0.ipv4.addresses = [
@@ -28,17 +27,16 @@
       "2606:4700:4700::1111"
       "2001:4860:4860::8888"
     ];
-  };
 
-  # Wireguard
-  services.wg-quick = {
-    enable = true;
-    configFile = "/etc/wireguard/wg0.conf";
-    autostart = true;
+    # wireguard
+    wg-quick.interfaces."wg0" = {
+      configFile = "/etc/wireguard/wg0.conf";
+      autostart = true;
+    };
   };
 
   # Tailscale
-  systemd.services.tailscale.after = "wg-quick@wg0.service";
+  systemd.services.tailscale.after = ["wg-quick@wg0.service"];
 
   # Cloudflared
   services.cloudflared = {

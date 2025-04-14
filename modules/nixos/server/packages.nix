@@ -1,4 +1,4 @@
-{pkgs}:
+{pkgs, ...}:
 with pkgs; {
   imports = [
     ../../shared/packages.nix

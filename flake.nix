@@ -89,7 +89,7 @@
       ];
     };
 
-    nixosConfiguration."lunaISO" = nixos-generators.nixosGenerate {
+    packages.x86_64-linux."lunaISO" = nixos-generators.nixosGenerate {
       inherit specialArgs;
       system = "x86_64-linux";
       modules = [

@@ -91,7 +91,8 @@
 
     users.root = {...}: {
       imports = [
-        ../../modules/shared/programs/ssh.nix
+        ../../modules/nixos/server/programs/ssh.nix
+
         ./packages.nix
       ];
       home = {

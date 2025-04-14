@@ -1,4 +1,8 @@
-{vars, ...}: {
+{
+  pkgs,
+  vars,
+  ...
+}: {
   users.mutableUsers = false; # Don't allow mutation of users outside the config.
 
   users.groups = {
@@ -14,6 +18,7 @@
       "wheel"
       "docker"
     ];
+    shell = pkgs.zsh;
   };
 
   users.users.root = {

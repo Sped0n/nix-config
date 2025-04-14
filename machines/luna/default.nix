@@ -4,7 +4,7 @@
     ./system.nix
     ./disko.nix
     ./networking.nix
-    ./ssh.nix
+    ./sshd.nix
   ];
 
   home-manager = {

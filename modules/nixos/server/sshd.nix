@@ -1,12 +1,4 @@
 {...}: {
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [];
-    allowedUDPPorts = [];
-    allowedUDPPortRanges = [
-    ];
-  };
-
   services.openssh = {
     enable = true;
     settings = {

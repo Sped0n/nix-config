@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   disko.devices = {
     disk = {
       my-disk = {
@@ -29,5 +29,11 @@
         };
       };
     };
+  };
+
+  # Workarounds
+  fileSystems."/" = {
+    fsType = lib.mkForce "btrfs";
+    device = lib.mkForce "/dev/disk/by-partlabel/disk-main-root";
   };
 }
