@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   specialArgs,
   vars,
@@ -34,6 +35,12 @@
     };
     gc = {
       automatic = true;
+      interval = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      };
+      dates = lib.mkIf pkgs.stdenv.hostPlatform.isLinux "weekly";
       options = "--delete-older-than 14d";
     };
   };
