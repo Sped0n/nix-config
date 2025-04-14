@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  vars,
   pkgs,
   modulesPath,
   ...
@@ -82,9 +83,20 @@
   ];
 
   home-manager = {
-    users.spedon = {...}: {
+    users.${vars.username} = {...}: {
       imports = [
         ./programs
+        ./packages.nix
+      ];
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        stateVersion = "24.11";
+      };
+    };
+
+    users.root = {...}: {
+      imports = [
+        ../../modules/shared/programs/ssh.nix
         ./packages.nix
       ];
       home = {

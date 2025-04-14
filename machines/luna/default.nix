@@ -11,6 +11,18 @@
     users.${vars.username} = {...}: {
       imports = [
         ./packages.nix
+        ./programs
+      ];
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        stateVersion = "24.11";
+      };
+    };
+
+    users.root = {...}: {
+      imports = [
+        ../../modules/shared/programs/ssh.nix
+        ./packages.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;
