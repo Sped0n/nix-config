@@ -123,17 +123,4 @@
 
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
-
-  # Z Shell
-  programs.zsh.enable = true;
-  environment.shells = [
-    pkgs.zsh
-  ];
-
-  # Fonts
-  fonts = {
-    packages = with pkgs; [
-      lilex
-    ];
-  };
 }

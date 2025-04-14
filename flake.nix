@@ -41,7 +41,6 @@
     specialArgs =
       inputs // {inherit vars;};
   in {
-    imports = ["${secrets}/vars"];
     darwinConfigurations."ringo" = nix-darwin.lib.darwinSystem {
       inherit specialArgs;
       system = "aarch64-darwin";

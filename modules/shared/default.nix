@@ -1,4 +1,10 @@
-{...}: {
+{
+  pkgs,
+  specialArgs,
+  vars,
+  ...
+}: {
+  # Nixpkgs
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -17,5 +23,27 @@
             || pathExists (path + ("/" + n + "/default.nix")))
           (attrNames (readDir path)))
           ++ [];
+  };
+
+  # Nix
+  nix = {
+    package = pkgs.nix;
+    settings = {
+      trusted-users = ["${vars.username}"];
+      experimental-features = "nix-command flakes";
+    };
+  };
+
+  # Home manager
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = specialArgs;
+  };
+
+  # Zsh
+  programs.zsh.enable = true;
+  environment = {
+    shells = [pkgs.zsh];
   };
 }

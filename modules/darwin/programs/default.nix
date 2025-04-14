@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./ssh.nix
+    ../../shared/programs
     ./ghostty.nix
   ];
 

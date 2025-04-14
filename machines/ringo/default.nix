@@ -1,32 +1,28 @@
-{
-  pkgs,
-  vars,
-  ...
-}: {
+{vars, ...}: {
   imports = [
     ../../modules/darwin
-    ../../modules/shared
-    ../../modules/darwin/secrets.nix
   ];
 
-  nix = {
-    package = pkgs.nix;
-    enable = false; # For nix-darwin and determinate compatbility
-    settings = {
-      trusted-users = ["${vars.username}"];
-      experimental-features = "nix-command flakes";
+  nix.enable = false; # For nix-darwin and determinate compatbility
+
+  home-manager = {
+    users.${vars.username} = {...}: {
+      imports = [
+        ./programs
+        ./packages.nix
+      ];
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        stateVersion = "24.11";
+      };
     };
   };
 
-  environment = {
-    shells = [pkgs.zsh];
-  };
-
-  security.pam.services.sudo_local.touchIdAuth = true;
-
-  fonts = {
-    packages = with pkgs; [
-      lilex
-    ];
+  homebrew.masApps = {
+    "WeChat" = 836500024;
+    "WhatsApp Messenger" = 310633997;
+    "Endel" = 1346247457;
+    "Photomator" = 1444636541;
+    "VidHub" = 1659622164;
   };
 }

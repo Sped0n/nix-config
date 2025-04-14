@@ -1,10 +1,10 @@
 {
   pkgs,
   vars,
-  specialArgs,
   ...
 }: {
   imports = [
+    ../shared
     ./system.nix
     ./secrets.nix
   ];
@@ -14,8 +14,6 @@
     home = "/Users/${vars.username}";
     shell = pkgs.zsh;
   };
-
-  programs.zsh.enable = true;
 
   homebrew = {
     enable = true;
@@ -38,9 +36,6 @@
     # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
     masApps = {
       "Bitwarden" = 1352778147;
-      "WeChat" = 836500024;
-      "WhatsApp Messenger" = 310633997;
-      "Endel" = 1346247457;
       "Windows App" = 1295203466;
       "Dropover" = 1355679052;
       "Microsoft Word" = 462054704;
@@ -49,25 +44,13 @@
       "Microsoft Outlook" = 985367838;
       "Microsoft OneDrive" = 823766827;
       "PDFgear" = 6469021132;
-      "Photomator" = 1444636541;
-      "VidHub" = 1659622164;
     };
   };
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = specialArgs;
-    users.${vars.username} = {pkgs, ...}: {
-      imports = [
-        ./programs
-        ../shared/programs
-      ];
-      home = {
-        enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix {};
-        stateVersion = "24.11";
-      };
-    };
+  # Fonts
+  fonts = {
+    packages = with pkgs; [
+      lilex
+    ];
   };
 }
