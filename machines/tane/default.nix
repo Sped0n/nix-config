@@ -15,7 +15,7 @@
     # Include the OrbStack-specific configuration.
     ./orbstack.nix
     # Secrets
-    ./secrets.nix
+    # ./secrets.nix
   ];
 
   users.users.spedon = {
