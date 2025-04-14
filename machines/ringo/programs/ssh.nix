@@ -5,7 +5,7 @@
     ];
     matchBlocks = {
       "uranus" = {
-        hostname = vars.ips.uranus;
+        hostname = vars.uranus.ipv4;
         port = 12222;
         user = "${vars.username}";
         identityFile = [
@@ -18,7 +18,7 @@
       };
 
       "gitea" = {
-        hostname = vars.ips.uranus;
+        hostname = vars.uranus.ipv4;
         port = 12222;
         user = "git";
         identityFile = [
@@ -31,7 +31,7 @@
       };
 
       "neptune" = {
-        hostname = vars.ips.neptune;
+        hostname = vars.neptune.ipv4;
         port = 12222;
         user = "${vars.username}";
         identityFile = [
@@ -44,7 +44,7 @@
       };
 
       "luna" = {
-        hostname = vars.ips.luna;
+        hostname = vars.luna.ipv4;
         port = 12222;
         user = "${vars.username}";
         identityFile = [
