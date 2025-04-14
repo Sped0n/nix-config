@@ -14,6 +14,10 @@
 
     . /opt/orbstack-guest/etc/profile-late
   '';
+  environment.sessionVariables = {
+    TERM = "xterm-256color";
+    GPG_TTY = "$(tty)";
+  };
 
   # Enable documentation
   documentation.man.enable = true;
