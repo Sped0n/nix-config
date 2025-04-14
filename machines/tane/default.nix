@@ -14,7 +14,8 @@
     ./incus.nix
     # Include the OrbStack-specific configuration.
     ./orbstack.nix
-    # Secrets
+
+    ../../modules/shared
     ./secrets.nix
   ];
 
