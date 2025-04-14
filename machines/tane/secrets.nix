@@ -34,14 +34,14 @@
     secrets = {
       "github-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_github";
+          path = "/home/${vars.username}/.ssh/id_github";
           file = "${secrets}/github-ssh-key.age";
         }
         // user_readable;
 
       "github-signing-key" =
         {
-          path = "/Users/${vars.username}/.ssh/pgp_github.key";
+          path = "/home/${vars.username}/.ssh/pgp_github.key";
           file = "${secrets}/github-signing-key.age";
         }
         // user_readable;
