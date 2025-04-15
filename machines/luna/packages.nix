@@ -9,6 +9,7 @@ in
     home.packages =
       # Core
       [
+        vim
         gcc
       ]
       ++
