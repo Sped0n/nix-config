@@ -1,10 +1,13 @@
 {
   pkgs,
+  agenix,
   vars,
   ...
 }: {
   imports = [
     ../../modules/darwin
+
+    ./secrets.nix
   ];
 
   nix.linux-builder = {
@@ -16,8 +19,11 @@
   home-manager = {
     users.${vars.username} = {...}: {
       imports = [
+        agenix.homeManagerModules.default
+
         ./programs
         ./packages.nix
+        ./home-secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;

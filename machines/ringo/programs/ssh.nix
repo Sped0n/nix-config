@@ -1,4 +1,8 @@
-{vars, ...}: {
+{
+  config,
+  vars,
+  ...
+}: {
   programs.ssh = {
     includes = [
       "~/.orbstack/ssh/config"
@@ -9,7 +13,7 @@
         port = 12222;
         user = "${vars.username}";
         identityFile = [
-          "/Users/${vars.username}/.ssh/id_uranus"
+          config.age.secrets."uranus-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";
@@ -22,7 +26,7 @@
         port = 12222;
         user = "git";
         identityFile = [
-          "/Users/${vars.username}/.ssh/id_github"
+          config.age.secrets."github-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";
@@ -35,7 +39,7 @@
         port = 12222;
         user = "${vars.username}";
         identityFile = [
-          "/Users/${vars.username}/.ssh/id_neptune"
+          config.age.secrets."neptune-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";
@@ -48,7 +52,7 @@
         port = 12222;
         user = "${vars.username}";
         identityFile = [
-          "/Users/${vars.username}/.ssh/id_luna"
+          config.age.secrets."luna-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";

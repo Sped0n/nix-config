@@ -5,8 +5,8 @@
 }: {
   imports = [
     ../shared
+
     ./system.nix
-    ./secrets.nix
   ];
 
   nix.gc.interval = {

@@ -59,6 +59,7 @@
       modules = [
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
+        agenix.darwinModules.default
         {
           nix-homebrew = {
             enable = true;
