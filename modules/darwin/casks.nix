@@ -9,7 +9,6 @@ _: [
   "netron"
   "httpie"
   "termius"
-  "utm"
 
   # Communication Tools
   "discord"
