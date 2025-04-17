@@ -29,7 +29,7 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      trusted-users = ["${vars.username}"];
+      trusted-users = ["${vars.username}" "@admin"];
       experimental-features = "nix-command flakes";
     };
     gc = {

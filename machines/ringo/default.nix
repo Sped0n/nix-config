@@ -1,5 +1,4 @@
 {
-  pkgs,
   agenix,
   vars,
   ...
@@ -12,8 +11,19 @@
 
   nix.linux-builder = {
     enable = true;
-    systems = ["x86_64-linux"];
-    package = pkgs.darwin.linux-builder-x86_64;
+    systems = ["x86_64-linux" "aarch64-linux"];
+    ephemeral = true;
+    maxJobs = 2;
+    config = {
+      boot.binfmt.emulatedSystems = ["x86_64-linux"];
+      virtualisation = {
+        darwin-builder = {
+          diskSize = 40 * 1024;
+          memorySize = 4 * 1024;
+        };
+        cores = 2;
+      };
+    };
   };
 
   home-manager = {
