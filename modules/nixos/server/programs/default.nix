@@ -4,6 +4,5 @@
 
     ./ssh.nix
     ./neovim.nix
-    ./fastfetch.nix
   ];
 }

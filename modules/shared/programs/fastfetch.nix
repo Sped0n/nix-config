@@ -1,95 +1,55 @@
-{pkgs, ...}: {
+{...}: {
   programs.fastfetch = {
     enable = true;
     settings = let
-      keyTemplate = {
-        keyColor = "34"; # = color4
-      };
     in {
-      logo = {
-        source = "~/.config/fastfetch/logo.png";
-        type = "kitty-direct";
-        height = 12;
-        width = 29;
-        padding = {
-          top = 1;
-          bottom = 1;
-          left = 1;
-        };
-      };
+      logo = null;
 
       display = {
-        separator = ": ";
+        separator = " ›  ";
       };
 
       modules = [
         "break"
-        (
-          {
-            type = "os";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "kernel";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "packages";
-            format = "{} (nix-system)";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "shell";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "terminal";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "cpu";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "memory";
-            format = "{used} / {total}";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "disk";
-            folders = "/";
-            key = "Disk";
-            format = "{size-used} / {size-total}";
-          }
-          // keyTemplate
-        )
-        (
-          {
-            type = "uptime";
-          }
-          // keyTemplate
-        )
+        {
+          type = "os";
+          key = "OS  ";
+          keyColor = "31";
+        }
+        {
+          type = "kernel";
+          key = "KER ";
+          keyColor = "32";
+        }
+        {
+          type = "packages";
+          format = "{} (nixpkgs)";
+          key = "PKG ";
+          keyColor = "33";
+        }
+        {
+          type = "shell";
+          key = "SH  ";
+          keyColor = "34";
+        }
+        {
+          type = "cpu";
+          key = "CPU ";
+          keyColor = "35";
+        }
+        {
+          type = "memory";
+          format = "{used} / {total}";
+          key = "MEM ";
+          keyColor = "36";
+        }
+        {
+          type = "uptime";
+          key = "UP  ";
+          keyColor = "37";
+        }
         "break"
-        "colors"
       ];
     };
   };
-  xdg.configFile."fastfetch/logo.png".source =
-    if pkgs.stdenv.hostPlatform.isDarwin
-    then ../config/fastfetch/nix-darwin.png
-    else ../config/fastfetch/nixos.png;
 }
