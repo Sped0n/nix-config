@@ -15,6 +15,7 @@ with pkgs; {
       gnupg
 
       # Text and terminal utilities
+      macchina
       du-dust
       fd
       fzf
@@ -34,5 +35,15 @@ with pkgs; {
       # nix
       nixd
       alejandra
+
+      # toml
+      taplo
+
+      # yaml
+      yaml-language-server
+      prettierd
+
+      # json
+      vscode-langservers-extracted
     ];
 }

@@ -49,7 +49,6 @@ in
         neocmakelsp
 
         # typescript
-        prettierd
         vtsls
         eslint
         pnpm
