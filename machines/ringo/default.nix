@@ -11,15 +11,15 @@
     enable = true;
     systems = ["x86_64-linux" "aarch64-linux"];
     ephemeral = true;
-    maxJobs = 2;
+    maxJobs = 1;
     config = {
       boot.binfmt.emulatedSystems = ["x86_64-linux"];
       virtualisation = {
         darwin-builder = {
-          diskSize = 40 * 1024;
-          memorySize = 4 * 1024;
+          diskSize = 30 * 1024;
+          memorySize = 6 * 1024;
         };
-        cores = 2;
+        cores = 4;
       };
     };
   };
