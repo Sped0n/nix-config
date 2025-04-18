@@ -4,12 +4,6 @@ with pkgs; {
     ../../shared/packages.nix
   ];
   home.packages =
-    # Core
-    [
-      docker
-      docker-compose
-    ]
-    ++
     # Utils
     [
       nali

@@ -30,13 +30,13 @@
 
     # wireguard
     wg-quick.interfaces."wg0" = {
-      configFile = "/etc/wireguard/wg0.conf";
+      configFile = "/home/${vars.username}/secrets/wg0.conf";
       autostart = true;
     };
   };
 
   # Tailscale
-  systemd.services.tailscale.after = ["wg-quick@wg0.service"];
+  systemd.services.tailscale.after = ["wg-quick-wg0.service"];
 
   # Cloudflared
   services.cloudflared = {

@@ -16,10 +16,10 @@
     kernelModules = ["kvm-amd"];
   };
 
-  # swapDevices = [
-  #   {
-  #     device = "/swapfile";
-  #     size = 2 * 1024; # 2GB
-  #   }
-  # ];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 2 * 1024; # 2GB
+    }
+  ];
 }

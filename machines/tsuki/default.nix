@@ -1,4 +1,8 @@
-{vars, ...}: {
+{
+  agenix,
+  vars,
+  ...
+}: {
   imports = [
     ../../modules/nixos/server
 
@@ -11,8 +15,11 @@
   home-manager = {
     users.${vars.username} = {...}: {
       imports = [
+        agenix.homeManagerModules.default
+
         ./packages.nix
         ./programs
+        ./secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;
@@ -22,8 +29,11 @@
 
     users.root = {...}: {
       imports = [
+        agenix.homeManagerModules.default
+
         ../../modules/shared/programs/ssh.nix
         ./packages.nix
+        ./secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;
