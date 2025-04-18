@@ -4,6 +4,7 @@
   inputs = {
     # Core
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +40,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     agenix,
     secrets,
@@ -47,12 +49,17 @@
     nix-homebrew,
   }: let
     vars = import "${secrets}/vars";
-    specialArgs =
-      inputs // {inherit vars;};
   in {
-    darwinConfigurations."ringo" = nix-darwin.lib.darwinSystem {
-      inherit specialArgs;
+    darwinConfigurations."ringo" = nix-darwin.lib.darwinSystem rec {
       system = "aarch64-darwin";
+      specialArgs =
+        {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
+        // inputs // {inherit vars;};
       modules = [
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
@@ -68,9 +75,16 @@
       ];
     };
 
-    nixosConfigurations."tane" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+    nixosConfigurations."tane" = nixpkgs.lib.nixosSystem rec {
       system = "aarch64-linux";
+      specialArgs =
+        {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
+        // inputs // {inherit vars;};
       modules = [
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
@@ -78,9 +92,16 @@
       ];
     };
 
-    nixosConfigurations."tsuki" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+    nixosConfigurations."tsuki" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
+      specialArgs =
+        {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
+        // inputs // {inherit vars;};
       modules = [
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
