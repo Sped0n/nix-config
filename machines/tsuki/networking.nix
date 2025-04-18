@@ -1,5 +1,6 @@
 {vars, ...}: {
   networking = {
+    # Static IP
     hostName = "tsuki";
     interfaces.eth0.ipv4.addresses = [
       {
@@ -28,7 +29,12 @@
       "2001:4860:4860::8888"
     ];
 
-    # wireguard
+    # Firewall
+    firewall = {
+      allowedUDPPorts = [51820];
+    };
+
+    # Wireguard
     wg-quick.interfaces."wg0" = {
       configFile = "/home/${vars.username}/.config/secrets/wg0.conf";
       autostart = true;

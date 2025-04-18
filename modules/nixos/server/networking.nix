@@ -1,11 +1,8 @@
 {...}: {
   networking.firewall = {
     enable = true;
+    allowPing = false;
     trustedInterfaces = ["tailscale0"];
-    allowedTCPPorts = [];
-    allowedUDPPorts = [];
-    allowedUDPPortRanges = [
-    ];
   };
 
   services.tailscale = {
