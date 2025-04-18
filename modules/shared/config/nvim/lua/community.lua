@@ -22,6 +22,9 @@ return {
   { import = "astrocommunity.pack.zig" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.json" },
   -- motion
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.motion.mini-surround" },

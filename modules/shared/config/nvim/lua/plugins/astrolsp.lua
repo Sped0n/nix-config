@@ -18,6 +18,12 @@ return {
       -- typescript
       "vtsls",
       "eslint",
+      -- toml
+      "taplo",
+      -- yaml
+      "yamlls",
+      -- json
+      "jsonls",
     })
   end,
 }
