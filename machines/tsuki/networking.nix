@@ -1,24 +1,24 @@
 {vars, ...}: {
   networking = {
-    hostName = "luna";
+    hostName = "tsuki";
     interfaces.eth0.ipv4.addresses = [
       {
-        address = vars.luna.ipv4;
+        address = vars.tsuki.ipv4;
         prefixLength = 24;
       }
     ];
     defaultGateway = {
-      address = vars.luna.ipv4Gateway;
+      address = vars.tsuki.ipv4Gateway;
       interface = "eth0";
     };
     interfaces.eth0.ipv6.addresses = [
       {
-        address = vars.luna.ipv6;
+        address = vars.tsuki.ipv6;
         prefixLength = 64;
       }
     ];
     defaultGateway6 = {
-      address = vars.luna.ipv6Gateway;
+      address = vars.tsuki.ipv6Gateway;
       interface = "eth0";
     };
     nameservers = [

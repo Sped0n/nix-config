@@ -12,6 +12,8 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Misc
     secrets = {
       url = "git+ssh://git@github.com/Sped0n/nix-secrets";
       flake = false;
@@ -32,10 +34,6 @@
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -47,7 +45,6 @@
     disko,
     nix-darwin,
     nix-homebrew,
-    nixos-generators,
   }: let
     vars = import "${secrets}/vars";
     specialArgs =
@@ -80,25 +77,14 @@
       ];
     };
 
-    nixosConfigurations."luna" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."tsuki" = nixpkgs.lib.nixosSystem {
       inherit specialArgs;
       system = "x86_64-linux";
       modules = [
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
-        ./machines/luna
+        ./machines/tsuki
       ];
-    };
-
-    packages.x86_64-linux."lunaISO" = nixos-generators.nixosGenerate {
-      inherit specialArgs;
-      system = "x86_64-linux";
-      modules = [
-        disko.nixosModules.disko
-        home-manager.nixosModules.home-manager
-        ./machines/luna
-      ];
-      format = "iso";
     };
   };
 }

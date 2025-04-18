@@ -47,12 +47,12 @@
         };
       };
 
-      "luna" = {
-        hostname = vars.luna.ipv4;
+      "tsuki" = {
+        hostname = vars.tsuki.ipv4;
         port = 12222;
         user = "${vars.username}";
         identityFile = [
-          config.age.secrets."luna-ssh-key".path
+          config.age.secrets."tsuki-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";

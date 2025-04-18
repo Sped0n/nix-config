@@ -40,10 +40,10 @@
         }
         // user_readable;
 
-      "luna-ssh-key" =
+      "tsuki-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_luna";
-          file = "${secrets}/luna-ssh-key.age";
+          path = "/Users/${vars.username}/.ssh/id_tsuki";
+          file = "${secrets}/tsuki-ssh-key.age";
         }
         // user_readable;
     };
