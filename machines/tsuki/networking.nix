@@ -30,7 +30,7 @@
 
     # wireguard
     wg-quick.interfaces."wg0" = {
-      configFile = "/home/${vars.username}/secrets/wg0.conf";
+      configFile = "/home/${vars.username}/.config/secrets/wg0.conf";
       autostart = true;
     };
   };
