@@ -5,5 +5,6 @@
     ./ssh.nix
     ./neovim.nix
     ./ghostty.nix
+    ./hushlogin.nix
   ];
 }
