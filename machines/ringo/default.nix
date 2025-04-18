@@ -5,8 +5,6 @@
 }: {
   imports = [
     ../../modules/darwin
-
-    ./secrets.nix
   ];
 
   nix.linux-builder = {
@@ -33,7 +31,7 @@
 
         ./programs
         ./packages.nix
-        ./home-secrets.nix
+        ./secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;

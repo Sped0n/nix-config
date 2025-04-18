@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  agenix,
+  ...
+}: let
   codegpt = pkgs.callPackage ../../pkgs/codegpt.nix {};
 in
   with pkgs; {
@@ -9,6 +13,7 @@ in
     home.packages =
       # Core
       [
+        agenix.packages."${pkgs.system}".default
         docker
         openocd
         qemu
