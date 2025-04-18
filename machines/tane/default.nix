@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   vars,
+  agenix,
   pkgs,
   modulesPath,
   ...
@@ -80,8 +81,11 @@
   home-manager = {
     users.${vars.username} = {...}: {
       imports = [
+        agenix.homeManagerModules.default
+
         ./programs
         ./packages.nix
+        ./secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;
@@ -91,9 +95,11 @@
 
     users.root = {...}: {
       imports = [
+        agenix.homeManagerModules.default
         ../../modules/nixos/server/programs/ssh.nix
 
         ./packages.nix
+        ./secrets.nix
       ];
       home = {
         enableNixpkgsReleaseCheck = false;

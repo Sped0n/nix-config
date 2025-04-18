@@ -73,6 +73,7 @@
       system = "aarch64-linux";
       modules = [
         home-manager.nixosModules.home-manager
+        agenix.nixosModules.default
         ./machines/tane
       ];
     };
