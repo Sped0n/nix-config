@@ -110,11 +110,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744919155,
-        "narHash": "sha256-IJksPW32V9gid9vDxoloJMRk+YGjxq5drFHBFeBkKU8=",
+        "lastModified": 1745033012,
+        "narHash": "sha256-KjBMsjCzIOWgDqTZMYIriPFmHiQcCb2RhuDh5JF0VVc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "72526a5f7cde2ef9075637802a1e2a8d2d658f70",
+        "rev": "ae84885d9b6b62dc58ccd300e9ab321a3fd9f9c7",
         "type": "github"
       },
       "original": {
@@ -303,11 +303,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1744976311,
-        "narHash": "sha256-mgtyb8COy1/O47fxxl29Wxam1OTNhIIkdS+W4yY172E=",
+        "lastModified": 1745054564,
+        "narHash": "sha256-Wi9KAi5gRxND8yVAM9VzH/FMWyvraRX+Urz8byoirWs=",
         "ref": "refs/heads/main",
-        "rev": "c10eeffea418b0c38348f1c6b642f00ba1e57df2",
-        "revCount": 15,
+        "rev": "0d62e0956b6bf6e8a27f89f73b6ce757c632ae12",
+        "revCount": 18,
         "type": "git",
         "url": "ssh://git@github.com/Sped0n/nix-secrets"
       },
