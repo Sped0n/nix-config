@@ -16,7 +16,7 @@
 
     # Misc
     secrets = {
-      url = "git+ssh://git@github.com/Sped0n/nix-secrets";
+      url = "git+ssh://git@github.com/Sped0n/secrets";
       flake = false;
     };
 
