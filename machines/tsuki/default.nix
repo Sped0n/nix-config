@@ -1,6 +1,6 @@
 {
   agenix,
-  vars,
+  username,
   ...
 }: {
   imports = [
@@ -13,7 +13,7 @@
   ];
 
   home-manager = {
-    users.${vars.username} = {...}: {
+    users.${username} = {...}: {
       imports = [
         agenix.homeManagerModules.default
 

@@ -1,6 +1,6 @@
 {
-  vars,
   secrets,
+  home,
   ...
 }: {
   age = let
@@ -15,41 +15,41 @@
     };
   in {
     identityPaths = [
-      "/Users/${vars.username}/.ssh/id_agenix"
+      "${home}/.config/secrets/id_agenix"
     ];
 
     secrets = {
       "github-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_github";
+          path = "${home}/.ssh/id_github";
           file = "${secrets}/github-ssh-key.age";
         }
         // user_readable;
 
       "github-signing-key" =
         {
-          path = "/Users/${vars.username}/.ssh/pgp_github.key";
+          path = "${home}/.config/secrets/pgp_github.key";
           file = "${secrets}/github-signing-key.age";
         }
         // user_readable;
 
       "uranus-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_uranus";
+          path = "${home}/.ssh/id_uranus";
           file = "${secrets}/uranus-ssh-key.age";
         }
         // user_readable;
 
       "neptune-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_neptune";
+          path = "${home}/.ssh/id_neptune";
           file = "${secrets}/neptune-ssh-key.age";
         }
         // user_readable;
 
       "tsuki-ssh-key" =
         {
-          path = "/Users/${vars.username}/.ssh/id_tsuki";
+          path = "${home}/.ssh/id_tsuki";
           file = "${secrets}/tsuki-ssh-key.age";
         }
         // user_readable;

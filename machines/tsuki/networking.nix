@@ -1,4 +1,8 @@
-{vars, ...}: {
+{
+  vars,
+  home,
+  ...
+}: {
   networking = {
     # Static IP
     hostName = "tsuki";
@@ -36,7 +40,7 @@
 
     # Wireguard
     wg-quick.interfaces."wg0" = {
-      configFile = "/home/${vars.username}/.config/secrets/wg0.conf";
+      configFile = "${home}/.config/secrets/wg0.conf";
       autostart = true;
     };
   };

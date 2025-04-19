@@ -1,6 +1,6 @@
 {
   agenix,
-  vars,
+  username,
   ...
 }: {
   imports = [
@@ -10,7 +10,7 @@
   nix-homebrew = {
     enable = true;
     enableRosetta = true;
-    user = "${vars.username}";
+    user = "${username}";
   };
 
   # nix.linux-builder = {
@@ -40,7 +40,7 @@
   };
 
   home-manager = {
-    users.${vars.username} = {...}: {
+    users.${username} = {...}: {
       imports = [
         agenix.homeManagerModules.default
 

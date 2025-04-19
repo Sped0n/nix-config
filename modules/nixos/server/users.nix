@@ -1,5 +1,7 @@
 {
   pkgs,
+  username,
+  home,
   vars,
   ...
 }: {
@@ -9,8 +11,8 @@
     docker = {};
   };
 
-  users.users."${vars.username}" = {
-    home = "/home/${vars.username}";
+  users.users."${username}" = {
+    inherit home;
     hashedPassword = vars.hashedPassword;
     isNormalUser = true;
     extraGroups = [

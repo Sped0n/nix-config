@@ -2,10 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  vars,
   agenix,
   pkgs,
   modulesPath,
+  username,
   ...
 }: {
   imports = [
@@ -79,7 +79,7 @@
   ];
 
   home-manager = {
-    users.${vars.username} = {...}: {
+    users.${username} = {...}: {
       imports = [
         agenix.homeManagerModules.default
 

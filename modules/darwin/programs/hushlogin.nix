@@ -1,5 +1,5 @@
-{vars, ...}: {
-  home.file."/Users/${vars.username}/.hushlogin" = {
+{home, ...}: {
+  home.file."${home}/.hushlogin" = {
     source = ../config/hushlogin;
   };
 }

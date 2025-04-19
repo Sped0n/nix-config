@@ -1,7 +1,7 @@
 {
   pkgs,
   specialArgs,
-  vars,
+  username,
   ...
 }: {
   # Nixpkgs
@@ -29,7 +29,7 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      trusted-users = ["${vars.username}" "@admin"];
+      trusted-users = ["${username}" "@admin"];
       experimental-features = "nix-command flakes";
     };
     gc = {

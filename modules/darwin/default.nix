@@ -1,6 +1,7 @@
 {
   pkgs,
-  vars,
+  username,
+  home,
   ...
 }: {
   imports = [
@@ -15,9 +16,9 @@
     Minute = 0;
   };
 
-  users.users.${vars.username} = {
-    name = "${vars.username}";
-    home = "/Users/${vars.username}";
+  users.users.${username} = {
+    inherit home;
+    name = "${username}";
     shell = pkgs.zsh;
   };
 

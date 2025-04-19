@@ -1,6 +1,6 @@
 {
-  vars,
   secrets,
+  home,
   ...
 }: {
   age = let
@@ -12,27 +12,27 @@
     };
   in {
     identityPaths = [
-      "/home/${vars.username}/.ssh/id_agenix"
+      "${home}/.config/secrets/id_agenix"
     ];
 
     secrets = {
       "github-ssh-key" =
         {
-          path = "/home/${vars.username}/.ssh/id_github";
+          path = "${home}/.ssh/id_github";
           file = "${secrets}/github-ssh-key.age";
         }
         // user_readable;
 
       "github-signing-key" =
         {
-          path = "/home/${vars.username}/.ssh/pgp_github.key";
+          path = "${home}/.config/secrets/pgp_github.key";
           file = "${secrets}/github-signing-key.age";
         }
         // user_readable;
 
       "wg0-conf" =
         {
-          path = "/home/${vars.username}/.config/secrets/wg0.conf";
+          path = "${home}/.config/secrets/wg0.conf";
           file = "${secrets}/tsuki-wg0-conf.age";
         }
         // user_readable;

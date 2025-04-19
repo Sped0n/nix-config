@@ -1,5 +1,9 @@
-{vars, ...}: {
-  users.users."${vars.username}" = {
+{
+  vars,
+  username,
+  ...
+}: {
+  users.users."${username}" = {
     openssh.authorizedKeys.keys = [vars.tsuki.primarySSHKey];
   };
 

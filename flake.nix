@@ -54,17 +54,20 @@
     nix-rosetta-builder,
   }: let
     vars = import "${secrets}/vars";
+    username = "spedon";
   in {
     darwinConfigurations."ringo" = nix-darwin.lib.darwinSystem rec {
       system = "aarch64-darwin";
       specialArgs =
         {
+          inherit vars username;
+          home = "/Users/${username}";
           pkgs-stable = import nixpkgs-stable {
             inherit system;
             config.allowUnfree = true;
           };
         }
-        // inputs // {inherit vars;};
+        // inputs;
       modules = [
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
@@ -78,12 +81,14 @@
       system = "aarch64-linux";
       specialArgs =
         {
+          inherit vars username;
+          home = "/home/${username}";
           pkgs-stable = import nixpkgs-stable {
             inherit system;
             config.allowUnfree = true;
           };
         }
-        // inputs // {inherit vars;};
+        // inputs;
       modules = [
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
@@ -95,12 +100,14 @@
       system = "x86_64-linux";
       specialArgs =
         {
+          inherit vars username;
+          home = "/home/${username}";
           pkgs-stable = import nixpkgs-stable {
             inherit system;
             config.allowUnfree = true;
           };
         }
-        // inputs // {inherit vars;};
+        // inputs;
       modules = [
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager

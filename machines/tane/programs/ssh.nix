@@ -1,6 +1,7 @@
 {
   config,
   vars,
+  username,
   ...
 }: {
   programs.ssh = {
@@ -8,7 +9,7 @@
       "uranus" = {
         hostname = vars.uranus.ipv4;
         port = 12222;
-        user = "${vars.username}";
+        user = "${username}";
         identityFile = [
           config.age.secrets."uranus-ssh-key".path
         ];
@@ -34,7 +35,7 @@
       "neptune" = {
         hostname = vars.neptune.ipv4;
         port = 12222;
-        user = "${vars.username}";
+        user = "${username}";
         identityFile = [
           config.age.secrets."neptune-ssh-key".path
         ];
@@ -47,7 +48,7 @@
       "tsuki" = {
         hostname = vars.tsuki.ipv4;
         port = 12222;
-        user = "${vars.username}";
+        user = "${username}";
         identityFile = [
           config.age.secrets."tsuki-ssh-key".path
         ];
