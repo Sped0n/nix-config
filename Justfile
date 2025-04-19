@@ -74,40 +74,32 @@ build:
 [macos]
 list-generations:
     #!/bin/sh -e
-    YELLOW='\033[1;33m'
-    RED='\033[1;31m'
-    NC='\033[0m'
-
     if ! command -v darwin-rebuild > /dev/null; then
-        echo "${RED}Error: 'darwin-rebuild' command not found in PATH.${NC}"
+        echo "Error: 'darwin-rebuild' command not found in PATH."
         exit 1
     fi
     REBUILD_CMD=$(command -v darwin-rebuild)
 
-    echo "${YELLOW}Available Nix-Darwin generations:${NC}"
+    echo "Available Nix-Darwin generations:"
     "$REBUILD_CMD" --list-generations
 
 # List Generations command (Linux version)
 [linux]
 list-generations:
     #!/bin/sh -e
-    YELLOW='\033[1;33m'
-    RED='\033[1;31m'
-    NC='\033[0m'
-
     if ! command -v nixos-rebuild > /dev/null; then
-        echo "${RED}Error: 'nixos-rebuild' command not found in PATH.${NC}"
+        echo "Error: 'nixos-rebuild' command not found in PATH."
         exit 1
     fi
 
     # Check for sudo privileges (needed for list)
     if ! sudo -n true 2>/dev/null; then
-        echo "${YELLOW}Requesting sudo privileges for listing generations...${NC}"
-        sudo -v || { echo "${RED}Error: sudo privileges are required.${NC}"; exit 1; }
+        echo "Requesting sudo privileges for listing generations..."
+        sudo -v || { echo "Error: sudo privileges are required."; exit 1; }
     fi
 
-    echo "${YELLOW}Available NixOS generations (requires sudo):${NC}"
-    sudo nixos-rebuild --list-generations
+    echo "Available NixOS generations (requires sudo):"
+    sudo nixos-rebuild list-generations
 
 # Rollback command (macOS version) - Takes generation number as argument
 [macos]
@@ -115,35 +107,31 @@ rollback gen_num:
     #!/bin/sh -e
     # This recipe rolls back to a specific Nix-Darwin generation provided as an argument.
 
-    GREEN='\033[1;32m'
-    YELLOW='\033[1;33m'
-    RED='\033[1;31m'
-    NC='\033[0m'
     GEN_NUM="{{gen_num}}" # Get generation number from just argument
 
     # Validate input
     if [ -z "$GEN_NUM" ]; then
-      echo "${RED}Error: Generation number argument is required.${NC}"
+      echo "Error: Generation number argument is required."
       echo "Usage: just rollback <generation_number>"
       exit 1
     fi
     if ! echo "$GEN_NUM" | grep -qE '^[0-9]+$'; then
-        echo "${RED}Error: Invalid input: '$GEN_NUM' is not a valid generation number.${NC}"
+        echo "Error: Invalid input: '$GEN_NUM' is not a valid generation number."
         exit 1
     fi
 
     # Try to find darwin-rebuild command dynamically
     if ! command -v darwin-rebuild > /dev/null; then
-        echo "${RED}Error: 'darwin-rebuild' command not found in PATH.${NC}"
+        echo "Error: 'darwin-rebuild' command not found in PATH."
         exit 1
     fi
     REBUILD_CMD=$(command -v darwin-rebuild)
 
-    echo "${YELLOW}Rolling back to generation $GEN_NUM...${NC}"
+    echo "Rolling back to generation $GEN_NUM..."
     # Use the found command and quote the variable
     "$REBUILD_CMD" switch --flake . --switch-generation "$GEN_NUM"
 
-    echo "${GREEN}Rollback to generation $GEN_NUM complete!${NC}"
+    echo "Rollback to generation $GEN_NUM complete!"
 
 # Rollback command (Linux version) - Takes generation number as argument
 [linux]
@@ -151,33 +139,29 @@ rollback gen_num:
     #!/bin/sh -e
     # This recipe rolls back to a specific NixOS generation provided as an argument.
 
-    GREEN='\033[1;32m'
-    YELLOW='\033[1;33m'
-    RED='\033[1;31m'
-    NC='\033[0m'
     GEN_NUM="{{gen_num}}" # Get generation number from just argument
 
     # Validate input
     if [ -z "$GEN_NUM" ]; then
-      echo "${RED}Error: Generation number argument is required.${NC}"
+      echo "Error: Generation number argument is required."
       echo "Usage: just rollback <generation_number>"
       exit 1
     fi
     if ! echo "$GEN_NUM" | grep -qE '^[0-9]+$'; then
-        echo "${RED}Error: Invalid input: '$GEN_NUM' is not a valid generation number.${NC}"
+        echo "Error: Invalid input: '$GEN_NUM' is not a valid generation number."
         exit 1
     fi
 
     # Check for nixos-rebuild command
     if ! command -v nixos-rebuild > /dev/null; then
-        echo "${RED}Error: 'nixos-rebuild' command not found in PATH.${NC}"
+        echo "Error: 'nixos-rebuild' command not found in PATH."
         exit 1
     fi
 
     # Check for sudo privileges (needed for switch)
     if ! sudo -n true 2>/dev/null; then
-        echo "${YELLOW}Requesting sudo privileges for switching generation...${NC}"
-        sudo -v || { echo "${RED}Error: sudo privileges are required.${NC}"; exit 1; }
+        echo "Requesting sudo privileges for switching generation..."
+        sudo -v || { echo "Error: sudo privileges are required."; exit 1; }
     fi
 
     # Construct the profile path
@@ -186,18 +170,18 @@ rollback gen_num:
     # Verify the profile path exists before attempting to switch
     # Use sudo to check because the path might require root to access/stat
     if ! sudo test -L "$PROFILE_PATH"; then
-      echo "${RED}Error: Generation $GEN_NUM (profile path $PROFILE_PATH) does not exist.${NC}"
+      echo "Error: Generation $GEN_NUM (profile path $PROFILE_PATH) does not exist."
       # Optionally, list generations again here for convenience
-      # echo "${YELLOW}Available generations:${NC}"
+      # echo "Available generations:"
       # sudo nixos-rebuild --list-generations
       exit 1
     fi
 
-    echo "${YELLOW}Rolling back to generation $GEN_NUM (requires sudo)...${NC}"
+    echo "Rolling back to generation $GEN_NUM (requires sudo)..."
     # Execute the switch using the specific profile path
     sudo nixos-rebuild switch --profile "$PROFILE_PATH"
 
-    echo "${GREEN}Rollback to generation $GEN_NUM complete!${NC}"
+    echo "Rollback to generation $GEN_NUM complete!"
 
 
 # --- Aliases ---
