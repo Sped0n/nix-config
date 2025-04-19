@@ -1,0 +1,30 @@
+{
+  pkgs-stable,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
+
+  boot = {
+    initrd.availableKernelModules = [
+      "uhci_hcd"
+      "virtio_blk"
+      "ahci"
+      "ata_piix"
+      "virtio_pci"
+      "xen_blkfront"
+      "vmw_pvscsi"
+    ];
+    kernelModules = ["kvm-amd"];
+    kernelPackages = pkgs-stable.linuxPackages;
+  };
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 1 * 1024; # 1GB
+    }
+  ];
+}

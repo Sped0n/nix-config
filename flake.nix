@@ -110,8 +110,29 @@
         // inputs;
       modules = [
         disko.nixosModules.disko
+        agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         ./machines/tsuki
+      ];
+    };
+
+    nixosConfigurations."tennousei" = nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      specialArgs =
+        {
+          inherit vars username;
+          home = "/home/${username}";
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
+        // inputs;
+      modules = [
+        disko.nixosModules.disko
+        agenix.nixosModules.default
+        home-manager.nixosModules.home-manager
+        ./machines/tennousei
       ];
     };
   };

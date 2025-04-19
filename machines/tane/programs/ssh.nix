@@ -6,8 +6,8 @@
 }: {
   programs.ssh = {
     matchBlocks = {
-      "uranus" = {
-        hostname = vars.uranus.ipv4;
+      "tennousei" = {
+        hostname = vars.tennousei.ipv4;
         port = 12222;
         user = "${username}";
         identityFile = [
@@ -20,7 +20,7 @@
       };
 
       "gitea" = {
-        hostname = vars.uranus.ipv4;
+        hostname = vars.tennousei.ipv4;
         port = 12222;
         user = "git";
         identityFile = [

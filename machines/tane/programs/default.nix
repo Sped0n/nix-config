@@ -1,7 +1,7 @@
 {
   imports = [
-    ../../../modules/shared/programs
-    ../../../modules/nixos/server/programs/neovim.nix
+    ../../../home/shared/programs
+    ../../../home/nixos/server/programs/neovim.nix
     ./ssh.nix
   ];
 }

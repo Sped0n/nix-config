@@ -303,11 +303,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1745054564,
-        "narHash": "sha256-Wi9KAi5gRxND8yVAM9VzH/FMWyvraRX+Urz8byoirWs=",
+        "lastModified": 1745061859,
+        "narHash": "sha256-RFl/FnmodHSjcGV9Hm3Rn2AbCU0R7Iuh3eCoRzGHvmY=",
         "ref": "refs/heads/main",
-        "rev": "0d62e0956b6bf6e8a27f89f73b6ce757c632ae12",
-        "revCount": 18,
+        "rev": "38e1f38df7d6c244e18e67299e6b2c35f27767e4",
+        "revCount": 20,
         "type": "git",
         "url": "ssh://git@github.com/Sped0n/nix-secrets"
       },

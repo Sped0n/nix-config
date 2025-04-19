@@ -4,13 +4,7 @@
   ...
 }: {
   age = let
-    # noaccess = {
-    #   mode = "0000";
-    # };
-    # high_security = {
-    #   mode = "0500";
-    # };
-    user_readable = {
+    readable = {
       mode = "0500";
     };
   in {
@@ -24,7 +18,7 @@
           path = "${home}/.ssh/id_github";
           file = "${secrets}/github-ssh-key.age";
         }
-        // user_readable;
+        // readable;
 
       # NOTE: disable after imported
       # "github-signing-key" =
@@ -32,28 +26,28 @@
       #     path = "${home}/.config/secrets/pgp_github.key";
       #     file = "${secrets}/github-signing-key.age";
       #   }
-      #   // user_readable;
+      #   // readable;
 
-      "uranus-ssh-key" =
+      "tennousei-ssh-key" =
         {
-          path = "${home}/.ssh/id_uranus";
-          file = "${secrets}/uranus-ssh-key.age";
+          path = "${home}/.ssh/id_tennousei";
+          file = "${secrets}/tennousei-ssh-key.age";
         }
-        // user_readable;
+        // readable;
 
       "neptune-ssh-key" =
         {
           path = "${home}/.ssh/id_neptune";
           file = "${secrets}/neptune-ssh-key.age";
         }
-        // user_readable;
+        // readable;
 
       "tsuki-ssh-key" =
         {
           path = "${home}/.ssh/id_tsuki";
           file = "${secrets}/tsuki-ssh-key.age";
         }
-        // user_readable;
+        // readable;
     };
   };
 }

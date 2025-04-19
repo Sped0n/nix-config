@@ -11,5 +11,5 @@
 
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${home}/.config/nix/modules/shared/config/nvim/";
+    "${home}/.config/nix/home/shared/config/nvim/";
 }

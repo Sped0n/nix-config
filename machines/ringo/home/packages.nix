@@ -3,11 +3,11 @@
   agenix,
   ...
 }: let
-  codegpt = pkgs.callPackage ../../pkgs/codegpt.nix {};
+  codegpt = pkgs.callPackage ../../../pkgs/codegpt.nix {};
 in
   with pkgs; {
     imports = [
-      ../../modules/darwin/packages.nix
+      ../../../home/darwin/packages.nix
     ];
 
     home.packages =

@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../../modules/darwin/programs
+    ../../../../home/darwin/programs
     ./ssh.nix
   ];
 }

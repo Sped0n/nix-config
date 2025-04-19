@@ -9,12 +9,12 @@
       "~/.orbstack/ssh/config"
     ];
     matchBlocks = {
-      "uranus" = {
-        hostname = vars.uranus.ipv4;
+      "tennousei" = {
+        hostname = vars.tennousei.ipv4;
         port = 12222;
         user = "${username}";
         identityFile = [
-          config.age.secrets."uranus-ssh-key".path
+          config.age.secrets."tennousei-ssh-key".path
         ];
         extraOptions = {
           "TCPKeepAlive" = "yes";
@@ -23,7 +23,7 @@
       };
 
       "gitea" = {
-        hostname = vars.uranus.ipv4;
+        hostname = vars.tennousei.ipv4;
         port = 12222;
         user = "git";
         identityFile = [

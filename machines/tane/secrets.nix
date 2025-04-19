@@ -34,10 +34,10 @@
       #   }
       #   // user_readable;
 
-      "uranus-ssh-key" =
+      "tennousei-ssh-key" =
         {
-          path = "${home}/.ssh/id_uranus";
-          file = "${secrets}/uranus-ssh-key.age";
+          path = "${home}/.ssh/id_tennousei";
+          file = "${secrets}/tennousei-ssh-key.age";
         }
         // user_readable;
 

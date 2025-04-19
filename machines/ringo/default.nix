@@ -1,8 +1,4 @@
-{
-  agenix,
-  username,
-  ...
-}: {
+{username, ...}: {
   imports = [
     ../../modules/darwin
   ];
@@ -41,13 +37,7 @@
 
   home-manager = {
     users.${username} = {...}: {
-      imports = [
-        agenix.homeManagerModules.default
-
-        ./programs
-        ./packages.nix
-        ./secrets.nix
-      ];
+      imports = [./home];
       home = {
         enableNixpkgsReleaseCheck = false;
         stateVersion = "24.11";

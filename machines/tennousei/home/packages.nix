@@ -3,13 +3,20 @@
 in
   with pkgs; {
     imports = [
-      ../../modules/shared/packages.nix
+      ../../../home/nixos/server/packages.nix
     ];
+
     home.packages =
+      # Main
       [
+        cloudflared
+        docker-compose
+        vim
       ]
-      ++ [
-        # Others
+      ++
+      # Others
+      [
         codegpt
+        hugo
       ];
   }

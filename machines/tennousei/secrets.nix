@@ -13,10 +13,10 @@
     ];
 
     secrets = {
-      "wg0-conf" =
+      "tennousei-cf-tunnel-json" =
         {
-          path = "${home}/.config/secrets/wg0.conf";
-          file = "${secrets}/tsuki-wg0-conf.age";
+          path = "${home}/.config/secrets/cf-tunnel.json";
+          file = "${secrets}/tennousei-cf-tunnel-json.age";
           owner = "root";
         }
         // readable;
