@@ -309,11 +309,11 @@
         "rev": "38e1f38df7d6c244e18e67299e6b2c35f27767e4",
         "revCount": 20,
         "type": "git",
-        "url": "ssh://git@github.com/Sped0n/nix-secrets"
+        "url": "ssh://git@github.com/Sped0n/secrets"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/Sped0n/nix-secrets"
+        "url": "ssh://git@github.com/Sped0n/secrets"
       }
     },
     "systems": {
