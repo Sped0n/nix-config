@@ -43,9 +43,4 @@
 
   # Tailscale
   systemd.services.tailscale.after = ["wg-quick-wg0.service"];
-
-  # Cloudflared
-  services.cloudflared = {
-    enable = true;
-  };
 }
