@@ -77,25 +77,6 @@
       ];
     };
 
-    nixosConfigurations."tane" = nixpkgs.lib.nixosSystem rec {
-      system = "aarch64-linux";
-      specialArgs =
-        {
-          inherit vars username;
-          home = "/home/${username}";
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        }
-        // inputs;
-      modules = [
-        home-manager.nixosModules.home-manager
-        agenix.nixosModules.default
-        ./machines/tane
-      ];
-    };
-
     nixosConfigurations."tsuki" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs =
