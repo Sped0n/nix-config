@@ -42,5 +42,5 @@
   };
 
   # Tailscale
-  systemd.services.tailscale.after = ["wg-quick-wg0.service"];
+  systemd.services.tailscaled.after = ["wg-quick-wg0.service"];
 }
