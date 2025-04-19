@@ -35,6 +35,10 @@
       url = "github:zhaofengli-wip/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-rosetta-builder = {
+      url = "github:cpick/nix-rosetta-builder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -47,6 +51,7 @@
     disko,
     nix-darwin,
     nix-homebrew,
+    nix-rosetta-builder,
   }: let
     vars = import "${secrets}/vars";
   in {
@@ -64,13 +69,7 @@
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
         agenix.darwinModules.default
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = true;
-            user = "${vars.username}";
-          };
-        }
+        nix-rosetta-builder.darwinModules.default
         ./machines/ringo
       ];
     };

@@ -7,21 +7,36 @@
     ../../modules/darwin
   ];
 
-  nix.linux-builder = {
+  nix-homebrew = {
     enable = true;
-    systems = ["x86_64-linux" "aarch64-linux"];
-    ephemeral = true;
-    maxJobs = 1;
-    config = {
-      boot.binfmt.emulatedSystems = ["x86_64-linux"];
-      virtualisation = {
-        darwin-builder = {
-          diskSize = 30 * 1024;
-          memorySize = 6 * 1024;
-        };
-        cores = 4;
-      };
-    };
+    enableRosetta = true;
+    user = "${vars.username}";
+  };
+
+  # nix.linux-builder = {
+  #   enable = true;
+  #   systems = ["x86_64-linux" "aarch64-linux"];
+  #   ephemeral = true;
+  #   maxJobs = 1;
+  #   config = {
+  #     boot.binfmt.emulatedSystems = ["x86_64-linux"];
+  #     virtualisation = {
+  #       darwin-builder = {
+  #         diskSize = 30 * 1024;
+  #         memorySize = 3 * 1024; # qemu seems to have a 2x memeory leak
+  #       };
+  #       cores = 4;
+  #     };
+  #   };
+  # };
+
+  nix-rosetta-builder = {
+    enable = true;
+    cores = 6;
+    memory = "6GiB";
+    diskSize = "40GiB";
+    onDemand = true;
+    onDemandLingerMinutes = 60;
   };
 
   home-manager = {
