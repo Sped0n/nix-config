@@ -26,12 +26,13 @@
         }
         // user_readable;
 
-      "github-signing-key" =
-        {
-          path = "${home}/.config/secrets/pgp_github.key";
-          file = "${secrets}/github-signing-key.age";
-        }
-        // user_readable;
+      # NOTE: disable after imported
+      # "github-signing-key" =
+      #   {
+      #     path = "${home}/.config/secrets/pgp_github.key";
+      #     file = "${secrets}/github-signing-key.age";
+      #   }
+      #   // user_readable;
 
       "uranus-ssh-key" =
         {
